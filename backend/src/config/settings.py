@@ -1,4 +1,7 @@
 import os
-DATABASE_URL=os.getenv('DATABASE_URL','mysql+pymysql://replicaroute:replicaroute_demo_pw@localhost:17747/replicaroute')
-REDIS_URL=os.getenv('REDIS_URL','redis://redis:6379/0')
-JWT_SECRET=os.getenv('JWT_SECRET','local-replica-route-change-before-public-use')
+
+# MySQL is the deployment default (docker compose overrides this).
+# SQLite is accepted for local drills and tests.
+DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///./online-index.db')
+JWT_SECRET = os.getenv('JWT_SECRET', 'local-online-index-change-before-public-use')
+SEED_DEMO = os.getenv('SEED_DEMO', 'true').lower() == 'true'
